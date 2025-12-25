@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Merry Christmas 🎄</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+<style>
+/* ================= RESET ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Playfair Display', serif;
+    background:#0b1d4d; /* BLUE ONLY */
+    color:gold;        /* GOLD TEXT */
+    overflow-x:hidden;
+}
+
+/* ================= REVEAL ================= */
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s ease;
+}
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= WELCOME ================= */
+#welcome{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.star-box{
+    width:220px;
+    height:220px;
+    position:relative;
+}
+
+.star{
+    position:absolute;
+    font-size:28px;
+    opacity:0;
+}
+
+.star.spin{
+    animation:spin 6s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+#welcome h1{
+    font-family:'Italianno', cursive;
+    font-size:4.8rem;
+    margin-top:40px;
+    opacity:0;
+    transition:opacity 2s ease;
+}
+
+/* Scroll Indicator */
+.scroll-down{
+    position:absolute;
+    bottom:30px;
+    font-size:32px;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(14px)}
+}
+
+/* ================= HEADER ================= */
+header{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:60px 20px;
+}
+
+header h2{
+    font-family:'Italianno', cursive;
+    font-size:4.5rem;
+    margin-bottom:20px;
+}
+
+/* ================= TREE ================= */
+.tree-section{
+    min-height:110vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.tree{
+    position:relative;
+}
+
+.layer{
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    border-left:150px solid transparent;
+    border-right:150px solid transparent;
+    border-bottom:200px solid #1f7a4d;
+}
+
+.layer:nth-child(1){top:0}
+.layer:nth-child(2){top:110px;transform:translateX(-50%) scale(.9)}
+.layer:nth-child(3){top:220px;transform:translateX(-50%) scale(.8)}
+
+.trunk{
+    position:absolute;
+    top:410px;
+    left:50%;
+    transform:translateX(-50%);
+    width:70px;
+    height:120px;
+    background:#6b4a2d;
+    border-radius:10px;
+}
+
+/* ================= SANTA ================= */
+.santa{
+    margin:260px auto; /* ⬅ EXTRA SPACE: FIXED OVERLAP */
+    max-width:520px;
+    background:rgba(0,0,0,0.35);
+    padding:60px 50px 70px;
+    border-radius:30px;
+    text-align:center;
+}
+
+.santa h2{
+    font-family:'Italianno', cursive;
+    font-size:3.4rem;
+    margin-bottom:50px; /* ⬅ PUSH FACE DOWN */
+}
+
+.face{
+    width:160px;
+    height:160px;
+    background:#ffd1a4;
+    border-radius:50%;
+    margin:0 auto;
+    position:relative;
+}
+
+.eye{
+    width:16px;
+    height:16px;
+    background:black;
+    border-radius:50%;
+    position:absolute;
+    top:60px;
+}
+
+.eye.left{left:45px}
+.eye.right{right:45px}
+
+.beard{
+    position:absolute;
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    width:180px;
+    height:120px;
+    background:white;
+    border-radius:0 0 90px 90px;
+}
+
+.hat{
+    position:absolute;
+    top:-70px;
+    left:50%;
+    transform:translateX(-50%);
+    width:160px;
+    height:70px;
+    background:red;
+    border-radius:70px 70px 0 0;
+}
+
+.hat::after{
+    content:'';
+    position:absolute;
+    bottom:-16px;
+    left:50%;
+    transform:translateX(-50%);
+    width:180px;
+    height:20px;
+    background:white;
+    border-radius:20px;
+}
+
+/* ================= QUOTES ================= */
+.quotes{
+    padding:120px 20px;
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    font-style:italic;
+}
+
+.quotes p{
+    font-size:1.4rem;
+    margin-bottom:30px;
+}
+
+/* ================= VERSES ================= */
+.verses{
+    padding:120px 20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.verse{
+    background:rgba(0,0,0,0.35);
+    padding:25px;
+    border-left:5px solid gold;
+    margin-bottom:25px;
+    font-size:1.3rem;
+}
+
+/* ================= FOOTER ================= */
+footer{
+    background:#08153a;
+    padding:50px 20px;
+    text-align:center;
+    font-family:'Italianno', cursive;
+    font-size:1.6rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME -->
+<section id="welcome">
+    <div class="star-box" id="stars"></div>
+    <h1 id="welcomeText">Merry Christmas</h1>
+    <div class="scroll-down">⬇</div>
+</section>
+
+<header class="reveal">
+    <h2>Season of Joy</h2>
+    <p>May love, peace, and hope fill every home.</p>
+</header>
+
+<section class="tree-section reveal">
+    <div class="tree">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="trunk"></div>
+    </div>
+</section>
+
+<section class="santa reveal">
+    <h2>Season of Giving</h2>
+    <div class="face">
+        <div class="hat"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="beard"></div>
+    </div>
+</section>
+
+<section class="quotes reveal">
+    <p>“Christmas waves a magic wand over this world.”</p>
+    <p>“The joy of brightening other lives becomes the magic of Christmas.”</p>
+    <p>“At Christmas, all roads lead home.”</p>
+</section>
+
+<section class="verses reveal">
+    <div class="verse">“For unto us a Child is born.” — Isaiah 9:6</div>
+    <div class="verse">“Glory to God in the highest.” — Luke 2:14</div>
+    <div class="verse">“Thanks be to God for His indescribable gift.” — 2 Corinthians 9:15</div>
+</section>
+
+<footer>
+<strong>SUPPORT DEVELOPER:</strong><br>
+📞 +234 080 6589 3593<br>
+✉ thomasogar05@gmail.com<br>
+💳 OPAY: 8065893593<br><br>
+Created by Thomas 🎄
+</footer>
+
+<script>
+/* ===== WELCOME STAR ANIMATION ===== */
+const starBox=document.getElementById('stars');
+const positions=[
+    {top:0,left:100},
+    {top:100,left:200},
+    {top:200,left:100},
+    {top:100,left:0},
+    {top:100,left:100}
+];
+
+positions.forEach((pos,i)=>{
+    setTimeout(()=>{
+        const s=document.createElement('div');
+        s.className='star';
+        s.textContent='⭐';
+        s.style.top=pos.top+'px';
+        s.style.left=pos.left+'px';
+        s.style.opacity=1;
+        starBox.appendChild(s);
+
+        if(i===4){
+            setTimeout(()=>{
+                document.querySelectorAll('.star').forEach(st=>st.classList.add('spin'));
+                document.getElementById('welcomeText').style.opacity=1;
+            },600);
+        }
+    },i*600);
+});
+
+/* ===== SCROLL REVEAL ===== */
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
+            e.target.classList.add('active');
+        }
+    });
+},{threshold:0.15});
+
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+  </html>
